@@ -4,10 +4,7 @@
 
 $conexion = new PDO('pgsql:host=dpg-d8f3936rnols73aluuqg-a.oregon-postgres.render.com;dbname=sena_h0dw','sena_h0dw_user','2RN9lMdkwRVG6q8iX54je0ENCFQ7AWRe');
 $registrar = $conexion->prepare("INSERT INTO aprendices (nombre,telefono,detalles) VALUES (?, ?, ?)");
-$registrar->executeif(empty($_POST["nom"]) || empty($_POST["tel"]) || empty($_POST["det"])) {
-    echo "<p style='color:white;background-color:red;font-family:calibri,arial;font-size:24px;text-align:center'>Error: todos los campos son obligatorios</p>";
-    exit;
-}
+$registrar->execute([$_POST["nom"], $_POST["tel"], $_POST["det"]]);
 echo "<p style='color:white;background-color:green;font-family:calibri,arial;font-size:24px;text-align:center'>Registro exitoso</p>";
 
 $consulta = $conexion->prepare("SELECT * FROM aprendices order by id");
