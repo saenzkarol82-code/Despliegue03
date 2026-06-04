@@ -1,6 +1,6 @@
 <?php
 #control de recepcion de datos
-var_dump($_POST);
+#var_dump($_POST);
 
 $conexion = new PDO('pgsql:host=dpg-d8f3936rnols73aluuqg-a.oregon-postgres.render.com;dbname=sena_h0dw','sena_h0dw_user','2RN9lMdkwRVG6q8iX54je0ENCFQ7AWRe');
 $registrar = $conexion->prepare("INSERT INTO aprendices (nombre,telefono,detalles) VALUES (?, ?, ?)");
